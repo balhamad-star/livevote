@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f1b33">
+<title>LiveVote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="participant">
+<header class="topbar">
+  <div class="brand"><span class="dot"></span><span data-t="appName"></span></div>
+  <div class="spacer"></div>
+  <span id="codeTag" class="code small hidden" dir="ltr"></span>
+  <button id="langBtn" class="ghost small"></button>
+</header>
+
+<main class="phone">
+  <!-- join form -->
+  <section id="joinView" class="card">
+    <h1 data-t="joinTitle"></h1>
+    <form id="joinForm">
+      <label class="field"><span data-t="enterCode"></span>
+        <input id="codeIn" class="codeinput" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" dir="ltr" inputmode="text" placeholder="ABC123"></label>
+      <label class="field"><span data-t="yourName"></span><input id="nameIn" maxlength="40" dir="auto" autocomplete="name"></label>
+      <button class="primary big block" data-t="joinBtn"></button>
+      <p id="joinErr" class="error"></p>
+    </form>
+    <a class="hostlink" href="host.html" data-t="hostLink"></a>
+  </section>
+
+  <section id="liveView" class="hidden">
+    <div id="pStatus" class="muted small"></div>
+    <div id="pBody"></div>
+  </section>
+</main>
+
+<script type="module" src="join.js"></script>
+</body>
+</html>

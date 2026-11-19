@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LiveVote — Presenter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="vendor/qrcode.js"></script>
+</head>
+<body class="host">
+<header class="topbar">
+  <div class="brand"><span class="dot"></span><span data-t="appName"></span><span class="tag" data-t="presenterTag"></span></div>
+  <div class="spacer"></div>
+  <span id="modeBadge" class="badge"></span>
+  <button id="langBtn" class="ghost small"></button>
+</header>
+
+<!-- ───── Editor ───── -->
+<main id="editor" class="view">
+  <section class="editor">
+    <h1 data-t="buildSession"></h1>
+    <p class="muted" data-t="buildHint"></p>
+    <div id="resumeBox" class="notice hidden"></div>
+    <label class="field"><span data-t="sessionTitle"></span><input id="sTitle" data-tp="sessionTitlePh" dir="auto"></label>
+    <div id="qList"></div>
+    <div class="row wrap">
+      <button id="addQ" class="secondary">+ <span data-t="addQuestion"></span></button>
+      <button id="loadSample" class="ghost" data-t="loadSample"></button>
+      <button id="exportJson" class="ghost" data-t="saveFile"></button>
+      <label class="ghost btnlike"><span data-t="openFile"></span><input type="file" id="importJson" accept=".json,application/json" hidden></label>
+      <div class="spacer"></div>
+      <button id="startBtn" class="primary big" data-t="startSession"></button>
+    </div>
+    <p id="editorErr" class="error"></p>
+  </section>
+</main>
+
+<!-- ───── Presenter stage ───── -->
+<main id="stage" class="view hidden">
+  <div class="stage-top">
+    <div class="joininfo"><span data-t="joinAt"></span> <b id="joinHost" dir="ltr"></b> · <span data-t="withCode"></span> <b id="codeSmall" class="code" dir="ltr"></b></div>
+    <div class="spacer"></div>
+    <div id="miniQr" class="miniqr"></div>
+  </div>
+
+  <section id="lobby" class="lobby">
+    <h1 id="lobbyTitle" dir="auto"></h1>
+    <div class="lobby-grid">
+      <div id="bigQr" class="bigqr"></div>
+      <div class="lobby-info">
+        <p data-t="scanOrVisit"></p>
+        <div class="url" id="joinUrlTxt" dir="ltr"></div>
+        <p data-t="andEnterCode"></p>
+        <div class="code huge" id="codeBig" dir="ltr"></div>
+        <div class="count big"><b id="pCount">0</b> <span data-t="joined"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="qView" class="qview hidden">
+    <div class="qmeta">
+      <span id="qPos"></span><span id="qTypeLbl" class="pill"></span>
+      <div class="spacer"></div>
+      <span class="count"><b id="aCount">0</b> / <b id="pCount2">0</b> <span data-t="answered"></span></span>
+    </div>
+    <h2 id="qText" dir="auto"></h2>
+    <ol id="optPreview" class="optpreview"></ol>
+    <div id="resultsArea" class="results"></div>
+  </section>
+
+  <section id="endView" class="endview hidden">
+    <h1 data-t="sessionEnded"></h1>
+    <p class="muted" data-t="thanks"></p>
+  </section>
+
+  <footer class="controls">
+    <button id="exitBtn" class="ghost" data-t="exitSession"></button>
+    <button id="exportCsv" class="ghost" data-t="exportCsv"></button>
+    <span class="muted small hide-sm" data-t="shortcuts"></span>
+    <div class="spacer"></div>
+    <button id="prevBtn" class="secondary" data-t="prev"></button>
+    <button id="revealBtn" class="secondary"></button>
+    <button id="nextBtn" class="primary"></button>
+  </footer>
+</main>
+
+<script type="module" src="host.js"></script>
+</body>
+</html>
